@@ -12,7 +12,7 @@ import { CarrinhoContext } from '../contexts/CarrinhoContext';
 
 const BarraLateral = () => {
   const {aberto, handleClose} = useContext(BarraLateralContext);
-  const {carrinho, limparCarrinho, total, quantidadeItem} = useContext(CarrinhoContext);
+  const {carrinho, limparCarrinho, totalPreco, quantidadeItem} = useContext(CarrinhoContext);
 
   return (
       <div className={`${aberto ? 'right-0' : '-right-full'} w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-500 z-20 px-4 lg:px-[35px]`}>
@@ -27,7 +27,7 @@ const BarraLateral = () => {
         })}</div>
         <div className='flex flex-col gap-y-3 py-4 mt-4'>
           <div className='flex justify-between items-center w-full pt-2'>
-            <div className='font-semibold'><span className='mr-2'>Total: R${parseFloat(total).toFixed(2)}</span></div>
+            <div className='font-semibold'><span className='mr-2'>Total: R${parseFloat(totalPreco).toFixed(2)}</span></div>
             <div className='cursor-pointer text-white bg-red-500 flex justify-center items-center text-xl w-12 h-12' onClick={() => limparCarrinho()}><FiTrash2 /></div>
           </div>
           <Link to={'/'} className='bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-medium'>Ver carrinho</Link>

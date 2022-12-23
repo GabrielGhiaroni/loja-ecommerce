@@ -13,13 +13,13 @@ const CarrinhoProvider = ({children}) => {
   const [quantidadeItem, setQuantidadeItem] = useState(0);
 
   //estado preço total
-  const [total, setTotal] = useState(0);
+  const [totalPreco, setTotalPreco] = useState(0);
 
   useEffect(() => {
     const total = carrinho.reduce((acumulador, itemAtual) => {
       return acumulador + itemAtual.price * itemAtual.amount
     }, 0)
-    setTotal(total);
+    setTotalPreco(total);
   })
 
   //atualizando a quantidade de itens no carrinho
@@ -32,8 +32,6 @@ const CarrinhoProvider = ({children}) => {
     }
   }, [carrinho]);
  
-  //importando contexto barra lateral
-  const {aberto, setAberto} = useContext(BarraLateralContext);
 
   //add to cart
   const adicionarAoCarrinho = (produto, id) => {
@@ -100,7 +98,7 @@ const CarrinhoProvider = ({children}) => {
     }
   };
 
-  return <CarrinhoContext.Provider value={{carrinho, adicionarAoCarrinho, removerItemCarrinho, limparCarrinho, aumentarQuantidade, diminuirQuantidade, quantidadeItem, total}}>
+  return <CarrinhoContext.Provider value={{carrinho, adicionarAoCarrinho, removerItemCarrinho, limparCarrinho, aumentarQuantidade, diminuirQuantidade, quantidadeItem, totalPreco}}>
     {children}
     </CarrinhoContext.Provider>;
 };
