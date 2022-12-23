@@ -1,6 +1,4 @@
 import React, {createContext, useState, useEffect} from 'react';
-import { useContext } from 'react';
-import { BarraLateralContext } from './BarraLateralContext';
 
 //create context
 export const CarrinhoContext = createContext();
@@ -20,7 +18,7 @@ const CarrinhoProvider = ({children}) => {
       return acumulador + itemAtual.price * itemAtual.amount
     }, 0)
     setTotalPreco(total);
-  })
+  }, [carrinho])
 
   //atualizando a quantidade de itens no carrinho
   useEffect(() => {
